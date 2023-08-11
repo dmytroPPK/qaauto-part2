@@ -1,6 +1,5 @@
-from src.base_db import BaseDb
 from dataclasses import dataclass
-from pprint import pprint
+from src.base_db import BaseDb
 
 
 @dataclass
@@ -65,53 +64,3 @@ class UserDb(BaseDb):
             DELETE FROM users WHERE id = ?;
         '''
         self.execute(delete_query, (user_id,))
-
-
-# Tests
-if __name__ == "__main__":
-    db_file = "userdatabase.db"
-
-    # Creating the UserDb instance
-    user_db = UserDb(db_file)
-
-    user_db.execute("delete from users")
-
-    user_db.add_user(User('John', 24, "john.a@com"))
-    all_users = user_db.get_users()
-    pprint(all_users)
-
-    # user_db.delete_user_by_id(1)
-    # all_users = user_db.get_users()
-    # pprint(all_users)
-
-    john = user_db.get_user_by_id(1)
-    pprint(john)
-
-    john.age = 30
-    john.email = "John.Man@gmail.com"
-    user_db.update_user_by_id(john)
-
-    new_john = user_db.get_user_by_id(1)
-    pprint(john)
-
-    # Inserting data
-    # user_db.execute("INSERT INTO users (name, age) VALUES (?, ?);", ("Alice", 25))
-    # user_db.execute("INSERT INTO users (name, age) VALUES (?, ?);", ("Bob", 30))
-
-    # Selecting users
-    # users = user_db.get_users()
-    # for user in users:
-    #     print(user)
-
-    # Updating user
-    # user_db.update_user(1, "Alice Smith", 26)
-
-    # Deleting user
-    # user_db.delete_user(2)
-
-    # Getting user by ID
-    # user_by_id = user_db.get_user_by_id(1)
-    # print("User by ID:", user_by_id)
-
-    # Closing the UserDb instance (which also closes the underlying Database connection)
-    user_db.close()
