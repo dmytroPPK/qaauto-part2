@@ -1,0 +1,32 @@
+# ------------------------------
+# Pipeline for run pytest manually
+# ------------------------------
+
+name: Manual-Run-Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+    - name: Checkout code (git clone)
+      uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Update pip and install packages
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: run tests via pytest
+      run: pytest tests/
