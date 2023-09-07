@@ -1,4 +1,5 @@
 astroid==2.15.6
+attrs==23.1.0
 blinker==1.6.2
 Brotli==1.0.9
 certifi==2023.7.22
@@ -15,6 +16,7 @@ Flask-Cors==4.0.0
 gevent==23.9.0.post1
 geventhttpclient==2.0.10
 greenlet==2.0.2
+h11==0.14.0
 idna==3.4
 iniconfig==2.0.0
 isort==5.12.0
@@ -25,6 +27,7 @@ locust==2.16.1
 MarkupSafe==2.1.3
 mccabe==0.7.0
 msgpack==1.0.5
+outcome==1.2.0
 packaging==23.1
 platformdirs==3.10.0
 pluggy==1.2.0
@@ -32,17 +35,24 @@ psutil==5.9.5
 pycodestyle==2.11.0
 pyflakes==3.1.0
 pylint==2.17.5
+PySocks==1.7.1
 pytest==7.3.2
 python-dateutil==2.8.2
 pyzmq==25.1.1
 requests==2.31.0
 roundrobin==0.0.4
+selenium==4.9.1
 six==1.16.0
+sniffio==1.3.0
+sortedcontainers==2.4.0
 tomli==2.0.1
 tomlkit==0.12.1
+trio==0.22.2
+trio-websocket==0.10.4
 typing_extensions==4.7.1
 urllib3==2.0.4
 Werkzeug==2.3.7
 wrapt==1.15.0
+wsproto==1.2.0
 zope.event==5.0
 zope.interface==6.0
