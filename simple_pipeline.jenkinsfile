@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Prepare VENV') {
+            steps {
+                sh '''python3 -m venv venv
+                      . venv/bin/activate
+                      pip install -r requirements.txt
+                '''
+            }
+            
+        }
+        stage('Run simple api test') {
+            steps {
+                sh '''pip list -v
+                      . venv/bin/activate
+                      pip list -v
+                      pytest tests/test_simple_api.py
+                '''
+            }
+            
+        }
+        stage('Run simple db test') {
+            steps {
+                sh '''. venv/bin/activate
+                      pytest tests/test_user_db.py
+                '''
+            }
+            
+        }
+        stage('Run simple ui test') {
+            steps {
+                sh '''. venv/bin/activate
+                      pytest tests/test_simple_ui.py
+                '''
+            }
+            
+        }
+        
+    }
+    post { 
+        always { 
+            cleanWs()
+        }
+    }
+}
